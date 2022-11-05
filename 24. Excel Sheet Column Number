@@ -1,0 +1,50 @@
+Question link- https://leetcode.com/problems/excel-sheet-column-number/description/
+
+Question - Given a string columnTitle that represents the column title as appears in an Excel sheet, return its corresponding column number.
+
+For example:
+
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+ 
+
+Example 1:
+Input: columnTitle = "A"
+Output: 1
+
+Example 2:
+Input: columnTitle = "AB"
+Output: 28
+
+Example 3:
+Input: columnTitle = "ZY"
+Output: 701
+ 
+Constraints:
+1. 1 <= columnTitle.length <= 7
+2. columnTitle consists only of uppercase English letters.
+3. columnTitle is in the range ["A", "FXSHRXW"].
+
+CODE - 
+class Solution {
+    public int titleToNumber(String columnTitle) {
+         if(columnTitle.length() == 1) return columnTitle.charAt(0) - 'A' + 1;
+    
+    int ans = 0;
+    
+    for(int i = columnTitle.length() - 1; i >= 0; i--){
+        int idx = columnTitle.length() - 1 - i;
+        int power = (int)Math.pow(26, idx);
+        char ch = columnTitle.charAt(i);
+        ans += power * (ch - 'A' + 1);
+    }
+    
+    return ans;
+    }
+}
