@@ -29,7 +29,7 @@ Constraints:
 2. -100 <= Node.val <= 100
 
 /**
- * Definition for a binary tree node.
+ * Definition for a binary tree node. 
  * public class TreeNode {
  *     int val;
  *     TreeNode left;
