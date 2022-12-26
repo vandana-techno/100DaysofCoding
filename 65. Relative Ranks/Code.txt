@@ -1,0 +1,31 @@
+class Solution {
+  
+    public static String[] findRelativeRanks(int[] nums) {
+        int n = nums.length;
+        int[][] pair = new int[nums.length][2];
+        for (int i = 0; i < n; i++) {
+            pair[i][0] = nums[i];
+            pair[i][1] = i;
+        }
+        
+        Arrays.sort(pair, (a, b) -> (b[0] - a[0]));
+        
+        String[] result = new String[nums.length];
+        result[pair[0][1]] = "Gold Medal";
+        if(n>=2)
+            result[pair[1][1]] = "Silver Medal";
+        if(n>=3)
+            result[pair[2][1]] = "Bronze Medal";
+        for (int i = 3; i < nums.length; i++) {
+            result[pair[i][1]] = Integer.toString(i+1);
+        }
+        return result;
+    }
+    
+  public static void main (String[] args) throws java.lang.Exception{
+    int[] nums = {5, 4, 3, 2, 1};
+    String[] answer = findRelativeRanks(nums);
+    for(int i=0;i<5;i++)
+      System.out.print(answer[i] + " ");
+  }
+}
