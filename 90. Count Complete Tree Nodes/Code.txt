@@ -1,0 +1,33 @@
+class Solution {
+    public int countNodes(TreeNode root) {
+        int ans = 0;
+        TreeNode node = root;
+        
+        while(node != null) {
+            int left = leftDepth(node.left);
+            int right = leftDepth(node.right);
+            
+            if(left == right) {
+                ans += (1 << left);
+                node = node.right;
+                
+            } else {
+                ans += (1 << right);
+                node = node.left;
+            }
+        }
+        
+        return ans;
+    }
+    
+    private int leftDepth(TreeNode root) {
+        int ans = 0;
+        
+        while(root != null) {
+            ans++;
+            root = root.left;
+        }
+        
+        return ans;
+    }
+}
